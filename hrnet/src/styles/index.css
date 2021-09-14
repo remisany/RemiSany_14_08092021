@@ -4,11 +4,10 @@ html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,ifr
 * {
   font-size: 10px;
   font-family: "Roboto", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 body {
-  /*background-color: #BAC0CA;*/
   background-color: #323161;
   margin: 7rem;
   display: flex;
@@ -21,6 +20,6 @@ body {
   flex-direction: column;
   row-gap: 3rem;
   padding: 3rem 7rem;
-  border-radius: 2rem;
+  border-radius: .5rem;
   min-width: 40vw
 }

@@ -13,6 +13,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.1",
     "rs-react-modal": "^1.1.1",
+    "rs-react-select": "^1.1.4",
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
   },

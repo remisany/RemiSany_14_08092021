@@ -85,6 +85,7 @@ function SelectStates () {
         border: "none",
         borderTop: "solid .2rem",
         borderColor: colors.orange,
+        zIndex: "4"
     }
 
     const customOption = {
@@ -108,6 +109,7 @@ function SelectStates () {
 
     return (
         <Select
+            hoverBackground = {colors.orangeLight}
             options = {states}
             styleContainer = {customContainer}
             styleList = {customList}

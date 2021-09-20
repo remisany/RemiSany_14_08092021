@@ -72,7 +72,8 @@ function SelectDepartments () {
     return (
         <CONTAINER>
             {active ? <label>Department</label> : null}
-            <Select id = "test"
+            <Select
+                hoverBackground = {colors.orangeLight}
                 options = {departments}
                 styleContainer = {customContainer}
                 styleList = {customList}

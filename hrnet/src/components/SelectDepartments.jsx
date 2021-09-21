@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Select } from "rs-react-select"
 import styled from "styled-components"
+
+//Assets
+import Up from "../assets/caret-up-solid.svg"
+import Down from "../assets/caret-down-solid.svg"
 
 //Styles
 import colors from "../styles/colors"
@@ -8,15 +12,15 @@ import colors from "../styles/colors"
 const CONTAINER = styled.div`
     display: flex;
     flex-direction: column;
+`
 
-    label {
-        position: absolute;
-        color: ${colors.orange};
-        font-size: 1.3rem;
-        margin-top: -1.4rem;
-        font-weight: 700;
-    }
-    `
+const LABEL = styled.label`
+    position: absolute;
+    color: ${colors.orange};
+    font-size: 1.3rem;
+    margin-top: -1.4rem;
+    font-weight: 700;
+`
 
 function SelectDepartments () {
     const [active, setActive] = useState(false)
@@ -66,13 +70,28 @@ function SelectDepartments () {
     const customOptionSelected = {
         fontWeight: "500",
         fontSize: "1.5rem",
+        padding: ".2rem 0",
         color: colors.purpleLight
     }
 
+    useEffect((e) => {
+        const close = (e) => {
+            const department = e.target.innerHTML
+            if (departments.indexOf(department) !== -1) {
+                console.log(department)
+            }
+            setActive(false)
+            window.removeEventListener("click", close)
+        }
+
+        active && window.addEventListener("click", close)
+    })
+
     return (
-        <CONTAINER>
-            {active ? <label>Department</label> : null}
+        <CONTAINER onClick= {() => setActive(true)}>
+            {active ? <LABEL>Department</LABEL> : null}
             <Select
+                down = {Down}
                 hoverBackground = {colors.orangeLight}
                 options = {departments}
                 styleContainer = {customContainer}
@@ -81,9 +100,41 @@ function SelectDepartments () {
                 styleOptionSelected = {customOptionSelected}
                 stylePlaceholder= {customPlaceholder}
                 styleSelectMenu = {customSelectMenu}
+                up = {Up}
             />
         </CONTAINER>
     )
 }
 
 export default SelectDepartments
+
+/*
+    const test = () => {
+        console.log(active)
+        if (active) {
+            console.log("ok")
+        }
+
+        /*
+        const parent = e.target.parentNode.parentNode.parentNode
+        if (parent.id === "selectDepartments") {
+            console.log(e.target.innerHTML)
+        }
+    }
+
+    const SelectDepartments = (e) => {
+        setActive(true)
+        setTimeout(console.log(active), 3000)
+
+        if (!active) {
+            setActive(true)
+            window.addEventListener("click", test(e))
+        } else {
+            const parent = e.target.parentNode.parentNode.parentNode
+            if (parent.id === "selectDepartments") {
+                console.log(e.target.innerHTML)
+                setActive(false)
+            }
+        }
+    }
+*/

@@ -1,9 +1,30 @@
+import { useState, useEffect } from "react"
 import {Select} from "rs-react-select"
+import styled from "styled-components"
+
+//Assets
+import Up from "../assets/caret-up-solid.svg"
+import Down from "../assets/caret-down-solid.svg"
 
 //Styles
 import colors from "../styles/colors"
 
+const CONTAINER = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const LABEL = styled.label`
+    position: absolute;
+    color: ${colors.orange};
+    font-size: 1.3rem;
+    margin-top: -1.4rem;
+    font-weight: 700;
+`
+
 function SelectStates () {
+    const [active, setActive] = useState(false)
+
     const states = [
         "Alabama",
         "Alaska",
@@ -104,20 +125,39 @@ function SelectStates () {
     const customOptionSelected = {
         fontWeight: "500",
         fontSize: "1.5rem",
+        padding: ".2rem 0",
         color: colors.purpleLight
     }
 
+    useEffect((e) => {
+        const close = (e) => {
+            const state = e.target.innerHTML
+            if (states.indexOf(state) !== -1) {
+                console.log(state)
+            }
+            setActive(false)
+            window.removeEventListener("click", close)
+        }
+
+        active && window.addEventListener("click", close)
+    })
+
     return (
-        <Select
-            hoverBackground = {colors.orangeLight}
-            options = {states}
-            styleContainer = {customContainer}
-            styleList = {customList}
-            styleOption = {customOption}
-            styleOptionSelected = {customOptionSelected}
-            stylePlaceholder= {customPlaceholder}
-            styleSelectMenu = {customSelectMenu}
-        />
+        <CONTAINER onClick= {() => setActive(true)}>
+            {active ? <LABEL>State</LABEL> : null}
+            <Select
+                down = {Down}
+                hoverBackground = {colors.orangeLight}
+                options = {states}
+                styleContainer = {customContainer}
+                styleList = {customList}
+                styleOption = {customOption}
+                styleOptionSelected = {customOptionSelected}
+                stylePlaceholder= {customPlaceholder}
+                styleSelectMenu = {customSelectMenu}
+                up = {Up}
+            />
+        </CONTAINER>
     )
 }
 

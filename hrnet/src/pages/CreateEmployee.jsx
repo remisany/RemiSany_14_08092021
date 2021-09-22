@@ -4,9 +4,12 @@ import {useState} from "react"
 //Components
 import DateInput from "../components/DateInput"
 import SimpleInput from "../components/SimpleInput"
-import SelectStates from "../components/SelectStates"
-import SelectDepartments from "../components/SelectDepartments"
 import ModalWindow from "../components/ModalWindow"
+import SelectMenu from "../components/SelectMenu"
+
+//Datas
+import states from "../datas/states"
+import departments from "../datas/departments"
 
 //Styles
 import colors from "../styles/colors"
@@ -89,9 +92,15 @@ function CreateEmployee () {
                         type = "number"
                         id = "zip"
                     />
-                    <SelectStates />
+                    <SelectMenu
+                        options = {states}
+                        name = "State"
+                    />
                 </FIELDSET>
-                <SelectDepartments />
+                <SelectMenu
+                        options = {departments}
+                        name = "Department"
+                />
                 <BUTTON onClick = {(e) => handleSumbit(e)}>Save</BUTTON>
             </FORM>
             <ModalWindow

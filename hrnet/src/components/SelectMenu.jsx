@@ -14,70 +14,8 @@ const CONTAINER = styled.div`
     flex-direction: column;
 `
 
-function SelectStates () {
+function SelectMenu ({ options, name }) {
     const [active, setActive] = useState(false)
-
-    const states = [
-        "Alabama",
-        "Alaska",
-        "American Samoa",
-        "Arizona",
-        "Arkansas",
-        "California",
-        "Colorado",
-        "Connecticut",
-        "Delaware",
-        "District Of Columbia",
-        "Federated States Of Micronesia",
-        "Florida",
-        "Georgia",
-        "Guam",
-        "Hawaii",
-        "Idaho",
-        "Illinois",
-        "Indiana",
-        "Iowa",
-        "Kansas",
-        "Kentucky",
-        "Louisiana",
-        "Maine",
-        "Marshall Islands",
-        "Maryland",
-        "Massachusetts",
-        "Michigan",
-        "Minnesota",
-        "Mississippi",
-        "Missouri",
-        "Montana",
-        "Nebraska",
-        "Nevada",
-        "New Hampshire",
-        "New Jersey",
-        "New Mexico",
-        "New York",
-        "North Carolina",
-        "North Dakota",
-        "Northern Mariana Islands",
-        "Ohio",
-        "Oklahoma",
-        "Oregon",
-        "Palau",
-        "Pennsylvania",
-        "Puerto Rico",
-        "Rhode Island",
-        "South Carolina",
-        "South Dakota",
-        "Tennessee",
-        "Texas",
-        "Utah",
-        "Vermont",
-        "Virgin Islands",
-        "Virginia",
-        "Washington",
-        "West Virginia",
-        "Wisconsin",
-        "Wyoming",
-    ];
 
     const customContainer = {
         position: "relative",
@@ -123,9 +61,9 @@ function SelectStates () {
 
     useEffect((e) => {
         const close = (e) => {
-            const state = e.target.innerHTML
-            if (states.indexOf(state) !== -1) {
-                console.log(state)
+            const choice = e.target.innerHTML
+            if (options.indexOf(choice) !== -1) {
+                console.log(choice)
             }
             setActive(false)
             window.removeEventListener("click", close)
@@ -136,12 +74,12 @@ function SelectStates () {
 
     return (
         <CONTAINER onClick= {() => setActive(true)}>
-            {active && <label>State</label>}
+            {active && <label>{name}</label>}
             <Select
                 down = {Down}
-                placeholder = "State"
+                placeholder = {name}
                 hoverBackground = {colors.orangeLight}
-                options = {states}
+                options = {options}
                 styleContainer = {customContainer}
                 styleList = {customList}
                 styleOption = {customOption}
@@ -154,4 +92,4 @@ function SelectStates () {
     )
 }
 
-export default SelectStates
+export default SelectMenu

@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {useState} from "react"
 
 //Components
+import DateInput from "../components/DateInput"
 import SimpleInput from "../components/SimpleInput"
 import SelectStates from "../components/SelectStates"
 import SelectDepartments from "../components/SelectDepartments"
@@ -28,6 +29,23 @@ const BUTTON = styled.button`
     color: ${colors.white};
 `
 
+const FIELDSET = styled.fieldset`
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+    margin: -.5rem -1rem;
+    padding: 1.5rem 1rem;
+
+    border: solid.2rem ${colors.orangeLight};
+
+    legend {
+        color: ${colors.orangeLight};
+        margin: 0 auto;
+        padding: 0 .5rem;
+        font-size: 1.5rem;
+    }
+`
+
 function CreateEmployee () {
     const [active, setActive] = useState(false)
 
@@ -51,19 +69,28 @@ function CreateEmployee () {
                     type = "text"
                     id = "last-name"
                 />
-                <SimpleInput
-                    type = "text"
-                    id = "street"
+                <DateInput
+                    name = "Date of Birth"
                 />
-                <SimpleInput
-                    type = "text"
-                    id = "city"
+                <DateInput
+                    name = "Start Date"
                 />
-                <SimpleInput
-                    type = "number"
-                    id = "zip"
-                />
-                <SelectStates />
+                <FIELDSET>
+                    <legend>Address</legend>
+                    <SimpleInput
+                        type = "text"
+                        id = "street"
+                    />
+                    <SimpleInput
+                        type = "text"
+                        id = "city"
+                    />
+                    <SimpleInput
+                        type = "number"
+                        id = "zip"
+                    />
+                    <SelectStates />
+                </FIELDSET>
                 <SelectDepartments />
                 <BUTTON onClick = {(e) => handleSumbit(e)}>Save</BUTTON>
             </FORM>

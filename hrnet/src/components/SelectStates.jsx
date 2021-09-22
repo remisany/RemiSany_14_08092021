@@ -14,14 +14,6 @@ const CONTAINER = styled.div`
     flex-direction: column;
 `
 
-const LABEL = styled.label`
-    position: absolute;
-    color: ${colors.orange};
-    font-size: 1.3rem;
-    margin-top: -1.4rem;
-    font-weight: 700;
-`
-
 function SelectStates () {
     const [active, setActive] = useState(false)
 
@@ -144,9 +136,10 @@ function SelectStates () {
 
     return (
         <CONTAINER onClick= {() => setActive(true)}>
-            {active ? <LABEL>State</LABEL> : null}
+            {active && <label>State</label>}
             <Select
                 down = {Down}
+                placeholder = "State"
                 hoverBackground = {colors.orangeLight}
                 options = {states}
                 styleContainer = {customContainer}

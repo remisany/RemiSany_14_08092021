@@ -14,14 +14,6 @@ const CONTAINER = styled.div`
     flex-direction: column;
 `
 
-const LABEL = styled.label`
-    position: absolute;
-    color: ${colors.orange};
-    font-size: 1.3rem;
-    margin-top: -1.4rem;
-    font-weight: 700;
-`
-
 function SelectDepartments () {
     const [active, setActive] = useState(false)
 
@@ -89,9 +81,10 @@ function SelectDepartments () {
 
     return (
         <CONTAINER onClick= {() => setActive(true)}>
-            {active ? <LABEL>Department</LABEL> : null}
+            {active && <label>Department</label>}
             <Select
                 down = {Down}
+                placeholder = "Department"
                 hoverBackground = {colors.orangeLight}
                 options = {departments}
                 styleContainer = {customContainer}
@@ -107,34 +100,3 @@ function SelectDepartments () {
 }
 
 export default SelectDepartments
-
-/*
-    const test = () => {
-        console.log(active)
-        if (active) {
-            console.log("ok")
-        }
-
-        /*
-        const parent = e.target.parentNode.parentNode.parentNode
-        if (parent.id === "selectDepartments") {
-            console.log(e.target.innerHTML)
-        }
-    }
-
-    const SelectDepartments = (e) => {
-        setActive(true)
-        setTimeout(console.log(active), 3000)
-
-        if (!active) {
-            setActive(true)
-            window.addEventListener("click", test(e))
-        } else {
-            const parent = e.target.parentNode.parentNode.parentNode
-            if (parent.id === "selectDepartments") {
-                console.log(e.target.innerHTML)
-                setActive(false)
-            }
-        }
-    }
-*/

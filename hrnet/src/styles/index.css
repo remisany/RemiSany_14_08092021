@@ -23,3 +23,35 @@ body {
   border-radius: .5rem;
   min-width: 40vw
 }
+
+input {
+  font-size: 1.5rem;
+  padding: .2rem 0;
+  border: none;
+  background-color: #F8F7FB;
+  border-bottom: solid .2rem #594B94;
+  color: #594B94;
+  font-weight: 500;
+}
+
+input::placeholder {
+  color: #594B94;
+  font-weight: 300;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: solid .2rem #F04329;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+label {
+  position: absolute;
+  color: #F04329;
+  font-size: 1.3rem;
+  margin-top: -1.4rem;
+  font-weight: 700;
+}

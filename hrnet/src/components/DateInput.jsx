@@ -78,8 +78,10 @@ function DateInput ({ name }) {
         borderRadius: ".5rem"
     }
 
+    /*
     useEffect((e) => {
         const close = (e) => {
+            console.log(e.target.classList)
             if (!e.target.classList.contains("in")) {
                 setActive(false)
                 window.removeEventListener("click", close)
@@ -88,9 +90,10 @@ function DateInput ({ name }) {
 
         active && window.addEventListener("click", close)
     })
+    */
 
     return (
-        <CONTAINER onClick= {() => setActive(true)}>
+        <CONTAINER onClick = {() => setActive(true)}>
             {active && <label>{name}</label>}
             <Datepicker
                 date = {new Date()}

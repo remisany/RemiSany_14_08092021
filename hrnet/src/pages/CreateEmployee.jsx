@@ -66,11 +66,11 @@ function CreateEmployee () {
             <FORM>
                 <SimpleInput
                     type = "text"
-                    id = "first-name"
+                    name = "first-name"
                 />
                 <SimpleInput
                     type = "text"
-                    id = "last-name"
+                    name = "last-name"
                 />
                 <DateInput
                     name = "Date of Birth"
@@ -82,15 +82,15 @@ function CreateEmployee () {
                     <legend>Address</legend>
                     <SimpleInput
                         type = "text"
-                        id = "street"
+                        name = "street"
                     />
                     <SimpleInput
                         type = "text"
-                        id = "city"
+                        name = "city"
                     />
                     <SimpleInput
                         type = "number"
-                        id = "zip"
+                        name = "zip"
                     />
                     <SelectMenu
                         options = {states}

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import {Select} from "rs-react-select"
 import styled from "styled-components"
+import { useDispatch, useSelector } from 'react-redux'
 
 //Assets
 import Up from "../assets/caret-up-solid.svg"
@@ -9,12 +10,19 @@ import Down from "../assets/caret-down-solid.svg"
 //Styles
 import colors from "../styles/colors"
 
+//Features
+import { changeSelectMenu } from '../features/Form'
+
 const CONTAINER = styled.div`
     display: flex;
     flex-direction: column;
 `
 
 function SelectMenu ({ options, name }) {
+    const dispatch = useDispatch()
+    const id = name.toLowerCase()
+    const storeChoice = useSelector((state) => state.Form[id])
+
     const [active, setActive] = useState(false)
 
     const customContainer = {
@@ -59,21 +67,22 @@ function SelectMenu ({ options, name }) {
         color: colors.purpleLight
     }
 
-    useEffect((e) => {
-        const close = (e) => {
+    const changeChoice = (e) => {
             const choice = e.target.innerHTML
+            console.log(storeChoice)
             if (options.indexOf(choice) !== -1) {
-                console.log(choice)
+                if (storeChoice !== choice) {
+                    dispatch(changeSelectMenu(id, choice))
+                }
             }
-            setActive(false)
-            window.removeEventListener("click", close)
-        }
-
-        active && window.addEventListener("click", close)
-    })
+    }
 
     return (
-        <CONTAINER onClick= {() => setActive(true)}>
+        <CONTAINER
+            onClick = {(e) => {
+                setActive(true)
+                changeChoice(e)
+            }}>
             {active && <label>{name}</label>}
             <Select
                 down = {Down}

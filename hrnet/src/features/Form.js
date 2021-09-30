@@ -2,7 +2,7 @@ const initialState = {
     firstname: "",
     lastname: "",
     birthdate: "",
-    startday: "",
+    startdate: "",
     street: "",
     city: "",
     zip: "",
@@ -11,22 +11,15 @@ const initialState = {
 }
 
 const INPUT = "changeInput"
-const SELECT = "changeSelectMenu"
 
-export const changeInput = (e) => ({
-    type: INPUT,
-    id: e.target.id,
-    content: e.target.value
-})
-
-export const changeSelectMenu = (id, content) => ({
+export const changeInput = (id, content) => ({
     type: INPUT,
     id: id,
     content: content
 })
 
 function reducer (state = initialState, action) {
-    if (action.type === INPUT || action.type === SELECT) {
+    if (action.type === INPUT) {
         return {
             ...state,
             [action.id]: action.content

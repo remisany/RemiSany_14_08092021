@@ -73,10 +73,10 @@ function CreateEmployee () {
                     name = "last-name"
                 />
                 <DateInput
-                    name = "Date of Birth"
+                    name = "birth-date"
                 />
                 <DateInput
-                    name = "Start Date"
+                    name = "start-date"
                 />
                 <FIELDSET>
                     <legend>Address</legend>

@@ -9818,6 +9818,21 @@ rollup@^1.31.1:
     "@types/node" "*"
     acorn "^7.1.0"
 
+rs-react-datepicker@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/rs-react-datepicker/-/rs-react-datepicker-1.1.1.tgz#8883a0e5c912d691c46692cd8dc9b13ee033a9a0"
+  integrity sha512-QOcOtn4oGdXkodOlDKRZVBD0L2VJuPqWI5qi44xOx552CYPh2P+nEkd4ViaZSwGOH8GEAEXx0vClULpEF7HL8g==
+
+rs-react-modal@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rs-react-modal/-/rs-react-modal-2.0.1.tgz#1a2d133db57c8b1606684297a9afbee3e7dff60b"
+  integrity sha512-Wwia8g/oYNUkmKCdyRJ0CT8J5+ywewCxfkQZ/7exLCPzBymHm11QElC6AEeBl8HRvcW11aT8xv8xY3wJsPISgg==
+
+rs-react-select@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/rs-react-select/-/rs-react-select-1.1.5.tgz#94ec51789e36dc8e47d1da92767caf0689fc63e9"
+  integrity sha512-yVWveaOesz+hGSwiMlXaqvUWMZEa7XL9/LJIGWSsLODnPvb4GCfLh9DViw2R4RLJ92ZRcB0dr3OOweX3YBYbbQ==
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"

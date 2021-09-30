@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from "styled-components"
 
 //Features
@@ -11,16 +11,20 @@ const CONTAINER = styled.div`
 `
 
 function SimpleInput ({ type, name }) {
-    const dispatch = useDispatch()
-
-    const [active, setActive] = useState(false)
-
     const label = (name[0].toUpperCase() + name.slice(1)).replace("-", " ")
     const id = name.replace("-", "")
+    const dispatch = useDispatch()
+    const storeChoice = useSelector((state) => state.Form[id])
+    const [active, setActive] = useState(false)
 
     const close = (e) => {
         if (document.getElementById(id).value === "") {
             setActive(false)
+        } else {
+            const choice = e.target.value
+            if (storeChoice !== choice) {
+                dispatch(changeInput(id, choice))
+            }
         }
         window.removeEventListener("click", close)
     }
@@ -35,7 +39,6 @@ function SimpleInput ({ type, name }) {
                 onFocus = {() => setActive(true)}
                 onBlur = {(e) => {
                     close(e)
-                    dispatch(changeInput(e))
                 }}
             />
         </CONTAINER>

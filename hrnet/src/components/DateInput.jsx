@@ -23,12 +23,12 @@ const CONTAINER = styled.div`
 
 function DateInput ({ name }) {
     const id = name.replace("-", "")
-    let placeholder = name.replace("-", "")
+    let placeholder = name.replace("-", " ")
     placeholder = placeholder[0].toUpperCase() + placeholder.slice(1)
-    const idDatepicker = name + "Datepicker"
+    const idDatepicker = id + "Datepicker"
     const [active, setActive] = useState(false)
-    const storeChoice = useSelector((state) => state.Form[id])
     const dispatch = useDispatch()
+    const storeDate = useSelector((state) => state.Form[id])
 
     const customInput = {
         width: "100%"
@@ -96,46 +96,48 @@ function DateInput ({ name }) {
             window.removeEventListener("keydown", escape)
         }
 
-        const changeChoice = () => {
-            const choice = document.getElementById(name).value
-            if (storeChoice !== choice) {
-                dispatch(changeInput(id, choice))
-                reset()
-            }
-        }
-
         const close = (e) => {
-            changeChoice()
             const container = Array.from(document.querySelectorAll("#" + idDatepicker + " *"))
             if (container.indexOf(e.target) !== -1 || document.getElementById(idDatepicker) === e.target) {
             } else {
-                if (document.getElementById(name).value === "") {
-                    setActive(false)
+                if (document.getElementById(id).value === "") {
                     reset()
+                    setActive(false)
                 }
             }
         }
 
         const escape = (e) => {
             if (e.key === "Escape") {
-                if (document.getElementById(name).value === "") {
-                    setActive(false)
+                if (document.getElementById(id).value === "") {
                     reset()
-                    document.getElementById(name).blur()
+                    setActive(false)
+                    document.getElementById(id).blur()
                 }
             }
         }
 
-        active && window.addEventListener("click", close)
-        active && window.addEventListener("keydown", escape)
+        if (active) {
+            window.addEventListener("click", close)
+            window.addEventListener("keydown", escape)
+        }
     }, [active])
+
+    const onChange = () => {
+        console.log("date")
+        const date = document.getElementById(id).value
+        if (storeDate !== date) {
+            dispatch(changeInput(id, date))
+        }
+    }
 
     return (
         <CONTAINER onClick = {() => setActive(true)}>
             {active && <label>{placeholder}</label>}
             <Datepicker
                 date = {new Date()}
-                id = {name}
+                id = {id}
+                onChange = {onChange}
                 styleInput = {customInput}
                 styleDatePicker = {customDatePicker}
                 styleNumberDay = {customNumberDay}

@@ -97,6 +97,9 @@ function DateInput ({ name }) {
         }
 
         const close = (e) => {
+            if (document.getElementById(id).value !== "") {
+                reset()
+            }
             const container = Array.from(document.querySelectorAll("#" + idDatepicker + " *"))
             if (container.indexOf(e.target) !== -1 || document.getElementById(idDatepicker) === e.target) {
             } else {
@@ -124,7 +127,6 @@ function DateInput ({ name }) {
     }, [active])
 
     const onChange = () => {
-        console.log("date")
         const date = document.getElementById(id).value
         if (storeDate !== date) {
             dispatch(changeInput(id, date))

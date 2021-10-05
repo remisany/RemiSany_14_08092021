@@ -1,7 +1,14 @@
+import React from "react"
+
+//Components
+import Table from "../components/Table"
+
+import "../styles/table.css"
+
 function CurrentEmployees () {
     return (
         <main>
-            Current employees
+            <Table />
         </main>
     )
 }

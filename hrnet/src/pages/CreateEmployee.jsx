@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import {useState} from "react"
+import { useSelector } from 'react-redux'
 
 //Components
 import DateInput from "../components/DateInput"
@@ -51,6 +52,12 @@ const FIELDSET = styled.fieldset`
 
 function CreateEmployee () {
     const [active, setActive] = useState(false)
+    const store = useSelector((state) => state.Form)
+
+    const updateEmployees = () => {
+        console.log(store)
+        localStorage.setItem("listEmployee", store)
+    }
 
     const close = () => {
         setActive(!active)
@@ -59,6 +66,7 @@ function CreateEmployee () {
     const handleSumbit = (e) => {
         e.preventDefault()
         setActive(true)
+        updateEmployees()
     }
 
     return (

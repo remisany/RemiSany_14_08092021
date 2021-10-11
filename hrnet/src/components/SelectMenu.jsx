@@ -88,7 +88,7 @@ function SelectMenu ({ options, name }) {
         if (index !== -1) {
             if (storeChoice !== choice) {
                 if (id === "state") {
-                    console.log(abbreviation[index])
+                    choice = abbreviation[index]
                 }
                 dispatch(changeInput(id, choice))
             }

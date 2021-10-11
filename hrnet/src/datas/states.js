@@ -66,6 +66,7 @@ export const abbreviation = [
     "AL",
     "AK",
     "AS",
+    "AZ",
     "AR",
     "CA",
     "CO",

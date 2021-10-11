@@ -13,6 +13,9 @@ import colors from "../styles/colors"
 //Features
 import { changeInput } from '../features/Form'
 
+//Datas
+import { abbreviation } from "../datas/states"
+
 const CONTAINER = styled.div`
     display: flex;
     flex-direction: column;
@@ -80,18 +83,22 @@ function SelectMenu ({ options, name }) {
     }, [active])
 
     const changeChoice = (e) => {
-        const choice = e.target.innerHTML
-        if (options.indexOf(choice) !== -1) {
+        let choice = e.target.innerHTML
+        const index = options.indexOf(choice)
+        if (index !== -1) {
             if (storeChoice !== choice) {
+                if (id === "state") {
+                    console.log(abbreviation[index])
+                }
                 dispatch(changeInput(id, choice))
             }
         }
-    }
+    } 
 
     return (
         <CONTAINER id = {name}
             onClick = {(e) => {
-                setActive(true)
+                e.target.nodeName !== "IMG" && setActive(true)
                 changeChoice(e)
             }}>
             {active && <label>{name}</label>}

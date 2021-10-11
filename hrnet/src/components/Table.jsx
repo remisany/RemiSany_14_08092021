@@ -1,13 +1,12 @@
 import MUIDataTable from "mui-datatables";
 import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import {useState} from "react"
+import { useState } from "react"
 
 //Styles
 import colors from "../styles/colors"
 
 function Table() {
-  const [ListEmployees, setListEmployees] = useState(localStorage.getItem("listEmployee"))
-  console.log(ListEmployees)
+  const [ListEmployees, setListEmployees] = useState(JSON.parse(localStorage.getItem("Employee")))
 
   const columns = [
     {
@@ -45,53 +44,6 @@ function Table() {
     {
       name: "zip",
       label: "Zip",
-    },
-  ];
-  
-  const data = [
-    {
-      firstname: "Joe",
-      lastname: "James",
-      startdate: "01/08/2012",
-      department: "Sales",
-      birthdate: "01/05/1990",
-      street: "3425 Stone Street",
-      city: "Yonkers",
-      state: "NY",
-      zip: "1"
-    },
-    {
-      firstname: "John",
-      lastname: "Walsh",
-      startdate: "03/04/2008",
-      department: "Marketing",
-      birthdate: "07/12/1987",
-      street: "607 Heart Street",
-      city: "Hartford",
-      state: "CT",
-      zip: "2"
-    },
-    {
-      firstname: "Bob",
-      lastname: "Herm",
-      startdate: "10/04/2001",
-      department: "Engineering",
-      birthdate: "12/02/1978",
-      street: "33 Butterfly Street",
-      city: "Tampa",
-      state: "FL",
-      zip: "3"
-    },
-    {
-      firstname: "James ",
-      lastname: "Houston",
-      startdate: "05/21/2010",
-      department: "Human Ressources",
-      birthdate: "10/18/1994",
-      street: "6 Monkey Street",
-      city: "Dallas",
-      state: "TX",
-      zip: "4"
     },
   ];
 
@@ -179,14 +131,14 @@ function Table() {
     download: false,
     viewColumns: false,
     selectableRowsHeader: false,
-    selectableRows: false
+    selectableRows: false,
   };
 
   return (
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
         title = ""
-        //data = {ListEmployees}
+        data = {ListEmployees}
         columns = {columns}
         options = {options}
       />
@@ -195,3 +147,51 @@ function Table() {
 }
 
 export default Table
+
+/*
+const data = [
+  {
+    firstname: "Joe",
+    lastname: "James",
+    startdate: "01/08/2012",
+    department: "Sales",
+    birthdate: "01/05/1990",
+    street: "3425 Stone Street",
+    city: "Yonkers",
+    state: "NY",
+    zip: "1"
+  },
+  {
+    firstname: "John",
+    lastname: "Walsh",
+    startdate: "03/04/2008",
+    department: "Marketing",
+    birthdate: "07/12/1987",
+    street: "607 Heart Street",
+    city: "Hartford",
+    state: "CT",
+    zip: "2"
+  },
+  {
+    firstname: "Bob",
+    lastname: "Herm",
+    startdate: "10/04/2001",
+    department: "Engineering",
+    birthdate: "12/02/1978",
+    street: "33 Butterfly Street",
+    city: "Tampa",
+    state: "FL",
+    zip: "3"
+  },
+  {
+    firstname: "James",
+    lastname: "Houston",
+    startdate: "05/21/2010",
+    department: "Human Ressources",
+    birthdate: "10/18/1994",
+    street: "6 Monkey Street",
+    city: "Dallas",
+    state: "TX",
+    zip: "4"
+  },
+];*/

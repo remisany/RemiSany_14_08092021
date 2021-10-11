@@ -1,6 +1,7 @@
 import styled from "styled-components"
-import {useState} from "react"
+import {Fragment, useState} from "react"
 import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom';
 
 //Components
 import DateInput from "../components/DateInput"
@@ -52,15 +53,18 @@ const FIELDSET = styled.fieldset`
 
 function CreateEmployee () {
     const [active, setActive] = useState(false)
+    const [redirect, setRedirect] = useState(false)
     const store = useSelector((state) => state.Form)
 
     const updateEmployees = () => {
-        console.log(store)
-        localStorage.setItem("listEmployee", store)
+        let storage = JSON.parse(localStorage.getItem("Employee"))
+        storage === null ? storage = [store] : storage.push(store)
+        localStorage.setItem("Employee", JSON.stringify(storage))
     }
 
     const close = () => {
         setActive(!active)
+        setRedirect(true)
     }
 
     const handleSumbit = (e) => {
@@ -70,52 +74,56 @@ function CreateEmployee () {
     }
 
     return (
-        <main>
-            <FORM>
-                <SimpleInput
-                    type = "text"
-                    name = "first-name"
-                />
-                <SimpleInput
-                    type = "text"
-                    name = "last-name"
-                />
-                <DateInput
-                    name = "birth-date"
-                />
-                <DateInput
-                    name = "start-date"
-                />
-                <FIELDSET>
-                    <legend>Address</legend>
+        <Fragment>
+            {redirect && <Redirect to = "/current-employees" />}
+
+            <main>
+                <FORM>
                     <SimpleInput
                         type = "text"
-                        name = "street"
+                        name = "first-name"
                     />
                     <SimpleInput
                         type = "text"
-                        name = "city"
+                        name = "last-name"
                     />
-                    <SimpleInput
-                        type = "number"
-                        name = "zip"
+                    <DateInput
+                        name = "birth-date"
                     />
+                    <DateInput
+                        name = "start-date"
+                    />
+                    <FIELDSET>
+                        <legend>Address</legend>
+                        <SimpleInput
+                            type = "text"
+                            name = "street"
+                        />
+                        <SimpleInput
+                            type = "text"
+                            name = "city"
+                        />
+                        <SimpleInput
+                            type = "number"
+                            name = "zip"
+                        />
+                        <SelectMenu
+                            options = {states}
+                            name = "State"
+                        />
+                    </FIELDSET>
                     <SelectMenu
-                        options = {states}
-                        name = "State"
+                            options = {departments}
+                            name = "Department"
                     />
-                </FIELDSET>
-                <SelectMenu
-                        options = {departments}
-                        name = "Department"
+                    <BUTTON onClick = {(e) => handleSumbit(e)}>Save</BUTTON>
+                </FORM>
+                <ModalWindow
+                    active = {active}
+                    close = {close}
                 />
-                <BUTTON onClick = {(e) => handleSumbit(e)}>Save</BUTTON>
-            </FORM>
-            <ModalWindow
-                active = {active}
-                close = {close}
-            />
-        </main>
+            </main>
+        </Fragment>
     )
 }
 

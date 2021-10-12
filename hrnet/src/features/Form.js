@@ -10,13 +10,13 @@ const initialState = {
     department: ""
 }
 
-const INPUT = "changeInput"
+const INPUT = "changeInput";
 
 export const changeInput = (id, content) => ({
     type: INPUT,
     id: id,
     content: content
-})
+});
 
 function reducer (state = initialState, action) {
     if (action.type === INPUT) {
@@ -26,6 +26,6 @@ function reducer (state = initialState, action) {
         }
     }
     return state
-}
+};
 
-export default reducer 
+export default reducer;

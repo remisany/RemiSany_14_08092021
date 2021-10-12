@@ -1,9 +1,17 @@
-import {Modal} from "rs-react-modal"
+import { Modal } from "rs-react-modal";
 
 //Styles
-import colors from "../styles/colors"
+import colors from "../styles/colors";
+
+/**
+* @param {object} props - Props
+* @param {boolean} active - To open modal window
+* @param {function} close - Action when modal is closed
+* @returns {component} - Modal window
+*/
 
 function ModalWindow ({ active, close }) {
+    //Custom style
     const customContent = {
         fontSize: "1.5rem",
         color: colors.purpleLight,
@@ -17,7 +25,7 @@ function ModalWindow ({ active, close }) {
         padding: "2rem",
         alignItems: "center",
         borderRadius: ".3rem"
-    }
+    };
     
     const customButton = {
         fontSize: "2rem",
@@ -32,7 +40,7 @@ function ModalWindow ({ active, close }) {
         width: "12rem",
         padding: "1rem",
         borderRadius: ".3rem"
-    }
+    };
 
     return (
         <Modal
@@ -42,7 +50,7 @@ function ModalWindow ({ active, close }) {
             styleButton= {customButton}
             styleContent = {customContent}
         />
-    )
-}
+    );
+};
 
-export default ModalWindow
+export default ModalWindow;

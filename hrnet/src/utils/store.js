@@ -1,12 +1,8 @@
 //React
-import { combineReducers, createStore } from "redux"
+import { createStore } from "redux"
 
 //Reducers
-import FormReducer from "../features/Form"
-
-const reducer = combineReducers({
-    Form: FormReducer
-})
+import reducer from "../features/Form"
 
 const reduxDevtools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

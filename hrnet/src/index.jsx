@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import { Provider } from "react-redux"
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
 
 //Store
-import store from "./utils/store"
+import store from "./utils/store";
 
 //Components
 import Header from './components/Header';
 
 //Page
-import CreateEmployee from "./pages/CreateEmployee"
-import CurrentEmployees from "./pages/CurrentEmployees"
+import CreateEmployee from "./pages/CreateEmployee";
+import CurrentEmployees from "./pages/CurrentEmployees";
 
 //Styles
 import './styles/index.css';

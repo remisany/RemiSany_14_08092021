@@ -21,7 +21,7 @@ body {
   row-gap: 3rem;
   padding: 3rem 7rem;
   border-radius: .5rem;
-  min-width: 40vw
+  min-width: 40vw;
 }
 
 input {

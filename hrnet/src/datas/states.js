@@ -1,3 +1,4 @@
+//Select menu departments options
 const states = [
     "Alabama",
     "Alaska",
@@ -60,8 +61,9 @@ const states = [
     "Wyoming",
 ];
 
-export default states
+export default states;
 
+//States abbreviations 
 export const abbreviation = [
     "AL",
     "AK",
@@ -123,6 +125,3 @@ export const abbreviation = [
     "WI",
     "WY"
 ];
-
-console.log(states.length)
-console.log(abbreviation.length)

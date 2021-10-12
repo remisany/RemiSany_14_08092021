@@ -1,3 +1,4 @@
+//Select menu departments options
 const departments = [
     "Sales",
     "Marketing",
@@ -6,4 +7,4 @@ const departments = [
     "Legal"
 ];
 
-export default departments
+export default departments;

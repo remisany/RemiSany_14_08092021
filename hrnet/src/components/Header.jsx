@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom"
-import styled from "styled-components"
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 //Styles
-import colors from "../styles/colors"
+import colors from "../styles/colors";
 
 const HEADER = styled.header`
     display: flex;
@@ -38,6 +38,10 @@ const NAVLINK = styled(NavLink)`
     }
 `
 
+/**
+* @returns {component} - Header with name and nav menu
+*/
+
 function Header () {
     return (
         <HEADER>
@@ -48,7 +52,7 @@ function Header () {
                 <NAVLINK exact to = "/current-employees">Current Employees</NAVLINK>
             </nav>
         </HEADER>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

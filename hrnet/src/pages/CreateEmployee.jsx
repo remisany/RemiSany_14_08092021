@@ -1,20 +1,20 @@
-import styled from "styled-components"
-import {Fragment, useState} from "react"
-import { useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import styled from "styled-components";
+import { Fragment, useState } from "react";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 //Components
-import DateInput from "../components/DateInput"
-import SimpleInput from "../components/SimpleInput"
-import ModalWindow from "../components/ModalWindow"
-import SelectMenu from "../components/SelectMenu"
+import DateInput from "../components/DateInput";
+import SimpleInput from "../components/SimpleInput";
+import ModalWindow from "../components/ModalWindow";
+import SelectMenu from "../components/SelectMenu";
 
 //Datas
-import states from "../datas/states"
-import departments from "../datas/departments"
+import states from "../datas/states";
+import departments from "../datas/departments";
 
 //Styles
-import colors from "../styles/colors"
+import colors from "../styles/colors";
 
 const FORM = styled.form`
     display: flex;
@@ -51,27 +51,34 @@ const FIELDSET = styled.fieldset`
     }
 `
 
+/**
+* @returns {component} - Create employee page with form
+*/
+
 function CreateEmployee () {
-    const [active, setActive] = useState(false)
-    const [redirect, setRedirect] = useState(false)
-    const store = useSelector((state) => state.Form)
+    const [active, setActive] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const store = useSelector((state) => state.Form);
 
+    //Update local storage
     const updateEmployees = () => {
-        let storage = JSON.parse(localStorage.getItem("Employee"))
-        storage === null ? storage = [store] : storage.push(store)
-        localStorage.setItem("Employee", JSON.stringify(storage))
-    }
+        let storage = JSON.parse(localStorage.getItem("Employee"));
+        storage === null ? storage = [store] : storage.push(store);
+        localStorage.setItem("Employee", JSON.stringify(storage));
+    };
 
+    //Set active to false and redirect to current employees (after close modal)
     const close = () => {
-        setActive(!active)
-        setRedirect(true)
-    }
+        setActive(!active);
+        setRedirect(true);
+    };
 
+    //Set active to true (open modal) and call function to update the local storage
     const handleSumbit = (e) => {
-        e.preventDefault()
-        setActive(true)
-        updateEmployees()
-    }
+        e.preventDefault();
+        setActive(true);
+        updateEmployees();
+    };
 
     return (
         <Fragment>
@@ -119,12 +126,12 @@ function CreateEmployee () {
                     <BUTTON onClick = {(e) => handleSumbit(e)}>Save</BUTTON>
                 </FORM>
                 <ModalWindow
-                    active = {active}
-                    close = {close}
+                    active = { active }
+                    close = { close }
                 />
             </main>
         </Fragment>
-    )
-}
+    );
+};
 
-export default CreateEmployee
+export default CreateEmployee;

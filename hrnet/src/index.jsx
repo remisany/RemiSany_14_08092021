@@ -23,7 +23,7 @@ ReactDOM.render(
         <Header />
           <Switch>
             <Route exact path = "/" component = { CreateEmployee } />
-            <Route exact path = "/current-employees" component = { CurrentEmployees } />
+            <Route path = "/current-employees" component = { CurrentEmployees } />
           </Switch>
         </Router>
     </React.StrictMode>

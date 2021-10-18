@@ -58,7 +58,7 @@ const FIELDSET = styled.fieldset`
 function CreateEmployee () {
     const [active, setActive] = useState(false);
     const [redirect, setRedirect] = useState(false);
-    const store = useSelector((state) => state.Form);
+    const store = useSelector((state) => state);
 
     //Update local storage
     const updateEmployees = () => {

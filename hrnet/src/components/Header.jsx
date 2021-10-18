@@ -49,7 +49,7 @@ function Header () {
             <nav>
                 <NAVLINK exact to = "/" >Create Employee</NAVLINK>
                 <p>|</p>
-                <NAVLINK exact to = "/current-employees">Current Employees</NAVLINK>
+                <NAVLINK to = "/current-employees">Current Employees</NAVLINK>
             </nav>
         </HEADER>
     );
